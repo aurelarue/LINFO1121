@@ -7,6 +7,7 @@ public class SortCompare {
         long start = System.currentTimeMillis();
         //  if      (alg.equals("Insertion"))       Insertion.sort(a);
         if (alg.equals("Shell")) Shell.sort(a);
+        if (alg.equals("Java.util.Arrays")) Arrays.sort(a);
         long finish = System.currentTimeMillis();
         return finish - start;
     }
