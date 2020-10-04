@@ -8,8 +8,8 @@ public class Merge {
         if (v == w) return false;
         return v.compareTo(w) < 0;
     }
-
     private static Comparable[] aux;
+
     /**
      * Rearranges the array in ascending order, using the natural order.
      * @param a the array to be sorted
@@ -22,7 +22,10 @@ public class Merge {
         int mid = lo +(hi-lo)/2;
         sort(a, lo, mid); //sort left half.
         sort(a, mid+1, hi); //sort right half.
-        merge(a, lo, mid, hi);
+        if (less(a[mid+1], a[mid])){ //optimize for best case
+            merge(a, lo, mid, hi);
+        }
+
     }
 
     public static void merge(Comparable[] a, int lo, int mid, int hi){
