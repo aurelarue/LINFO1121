@@ -51,6 +51,44 @@ public class SortCompare {
         return total;
     }
 
+    // Use alg to sort trials arrays avec n fois la meme valeur.
+    public static double timeSameInput(String alg, int n, int trials) {
+        double total = 0.0;
+        Double[] a = new Double[n];
+        // Perform one experiment (generate and sort an array).
+        for (int t = 0; t < trials; t++) {
+            for (int i = 0; i < n; i++)
+                a[i] = 1.0;
+            total += time(alg, a);
+        }
+        return total;
+    }
+
+    public static void compare(String alg1, String alg2, String test){
+        int n = 1000; // on peut le mettre a 2, 1 et 0 aussi
+        int trials = 100;
+        double time1, time2;
+        if (test.equals("Sorted")) {
+            time1 = timeSortedInput(alg1, n, trials);   // Total for alg1.
+            time2 = timeSortedInput(alg2, n, trials);   // Total for alg2.
+            System.out.printf("For %d Doubles triés\n    %s is", n, alg1);
+        } else if (test.equals("Reversed")){
+            time1 = timeReversedInput(alg1, n, trials);   // Total for alg1.
+            time2 = timeReversedInput(alg2, n, trials);   // Total for alg2.
+            System.out.printf("For %d Doubles triés à l'envers\n    %s is", n, alg1);
+        } else {
+            time1 = timeRandomInput(alg1, n, trials);   // Total for alg1.
+            time2 = timeRandomInput(alg2, n, trials);   // Total for alg2.
+            System.out.printf("For %d random Doubles\n    %s is", n, alg1);
+        }
+        System.out.printf(" %.1f times faster than %s\n", time2/time1, alg2);
+    }
+
+    public static void main(String[] args) {
+        compare("Java.util.Arrays", "Shell", "Reversed");
+    }
+
+    /**
     public static void main(String[] args) {
         String alg1 = args[0];
         String alg2 = args[1];
@@ -72,4 +110,6 @@ public class SortCompare {
         }
         System.out.printf(" %.1f times faster than %s\n", time2/time1, alg2);
     }
+     **/
+
 }
