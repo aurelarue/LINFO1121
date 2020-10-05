@@ -8,6 +8,10 @@ public class SortCompare {
         //  if      (alg.equals("Insertion"))       Insertion.sort(a);
         if (alg.equals("Shell")) Shell.sort(a);
         if (alg.equals("Java.util.Arrays")) Arrays.sort(a);
+        if (alg.equals("Selection")) Selection.sort(a);
+        if (alg.equals("Insertion")) Shell.sort(a);
+        if (alg.equals("Merge")) Shell.sort(a);
+        if (alg.equals("Quick")) Shell.sort(a);
         long finish = System.currentTimeMillis();
         return finish - start;
     }
@@ -65,8 +69,8 @@ public class SortCompare {
     }
 
     public static void compare(String alg1, String alg2, String test){
-        int n = 1000; // on peut le mettre a 2, 1 et 0 aussi
-        int trials = 100;
+        int n = 10000; // on peut le mettre a 2, 1 et 0 aussi
+        int trials = 500;
         double time1, time2;
         if (test.equals("Sorted")) {
             time1 = timeSortedInput(alg1, n, trials);   // Total for alg1.
@@ -85,7 +89,46 @@ public class SortCompare {
     }
 
     public static void main(String[] args) {
-        compare("Java.util.Arrays", "Shell", "Reversed");
+
+        compare("Insertion", "Selection", "Reversed");
+        //compare("Insertion", "Selection", "Sorted");
+        //compare("Insertion", "Selection", "Random");
+
+        compare("Insertion", "Shell", "Reversed");
+        //compare("Insertion", "Shell", "Sorted");
+        //compare("Insertion", "Shell", "Random");
+
+        compare("Insertion", "Merge", "Reversed");
+        //compare("Insertion", "Merge", "Sorted");
+        //compare("Insertion", "Merge", "Random");
+
+        compare("Insertion", "Quick", "Reversed");
+        //compare("Insertion", "Quick", "Sorted");
+        //compare("Insertion", "Quick", "Random");
+
+        compare("Shell", "Selection", "Reversed");
+        //compare("Shell", "Selection", "Sorted");
+        //compare("Shell", "Selection", "Random");
+
+        compare("Merge", "Selection", "Reversed");
+        //compare("Merge", "Selection", "Sorted");
+        //compare("Merge", "Selection", "Random");
+
+        compare("Quick", "Selection", "Reversed");
+        //compare("Quick", "Selection", "Sorted");
+        //compare("Quick", "Selection", "Random");
+
+        compare("Shell", "Merge", "Reversed");
+        //compare("Shell", "Merge", "Sorted");
+        //compare("Shell", "Merge", "Random");
+
+        compare("Shell", "Quick", "Reversed");
+        //compare("Shell", "Quick", "Sorted");
+        //compare("Shell", "Quick", "Random");
+
+        compare("Merge", "Quick", "Reversed");
+        //compare("Merge", "Quick", "Sorted");
+        //compare("Merge", "Quick", "Random");
     }
 
     /**
